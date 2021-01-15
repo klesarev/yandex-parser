@@ -46,7 +46,7 @@ sites.forEach {
 FileDataHelper().writeContent("D:/links.txt",sb.toString())
 ```
 
-Если Вам не важна скорость выполнения, то можно существенно ускорить процесс, вызвав метод parallelStream() перед forEach
+Если Вам не важна последовательность выполнения, то можно существенно ускорить процесс, вызвав метод parallelStream() перед forEach
 
 ```kotlin
 sites.parallelstream().forEach {
