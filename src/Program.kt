@@ -21,7 +21,6 @@ fun main() {
     val sb = StringBuilder()
 
     sites
-        .parallelStream()
         .forEach {
             val title = GetMetaData().getTitle(it)
             val description = GetMetaData().getDescription(it)
