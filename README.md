@@ -26,7 +26,7 @@ val sites = GetMetaData().getLinks(user, key, "как скачать windows 10"
 Объявляем переменную, типа StringBulider или просто строковую
 
 ```kotlin
- val sb = StringBuilder()
+val sb = StringBuilder()
 ```
 
 Затем проходимся по полученному массиву, получаем мета-теги и записываем их в файл
@@ -42,8 +42,8 @@ sites.forEach {
        sb.append(description+"\n")
        sb.append(keywords)
        sb.append("\n\n")
-   	}
-   	FileDataHelper().writeContent("D:/links.txt",sb.toString())
+}
+FileDataHelper().writeContent("D:/links.txt",sb.toString())
 ```
 
 Если Вам не важна скорость выполнения, то можно существенно ускорить процесс, вызвав метод parallelStream() перед forEach
@@ -59,8 +59,8 @@ sites.parallelstream().forEach {
        sb.append(description+"\n")
        sb.append(keywords)
        sb.append("\n\n")
-   	}
-   	FileDataHelper().writeContent("D:/links.txt",sb.toString())
+}
+FileDataHelper().writeContent("D:/links.txt",sb.toString())
 ```
 
 ### Используемые Классы
