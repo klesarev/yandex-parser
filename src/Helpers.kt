@@ -8,7 +8,7 @@ import java.nio.file.StandardOpenOption
 
 class FileDataHelper {
 
-    fun getConetent(source: String): String {
+    fun getContent(source: String): String {
         var result = ""
         try {
             val bufferedReader: BufferedReader = Files.newBufferedReader(Paths.get(source))
@@ -19,7 +19,7 @@ class FileDataHelper {
         return result
     }
 
-    fun writeConetent(source: String, content: String) {
+    fun writeContent(source: String, content: String) {
         try {
             Files.write(Paths.get(source), content.toByteArray(), StandardOpenOption.APPEND, StandardOpenOption.CREATE)
         } catch (error: IOException) {

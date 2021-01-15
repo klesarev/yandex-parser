@@ -1,4 +1,5 @@
-
+import java.lang.StringBuilder
+import kotlin.system.measureTimeMillis
 
 fun main() {
 
@@ -13,20 +14,26 @@ fun main() {
      * @return        Массив ссылок из выдачи
      */
 
-    val user = "klesareff-igor"
-    val key = "03.89507884:2d756821c4ce510ebc11fb97ee7fcf1c"
+    val user = "yandex-user"
+    val key = "yandex-key"
 
     val sites = GetMetaData().getLinks(user, key, "как скачать windows 10", 0)
+    val sb = StringBuilder()
 
-    sites.forEach {
-        val title = GetMetaData().getTitle(it)
-        val description = GetMetaData().getDescription(it)
-        val keywords = GetMetaData().getKeywords(it)
+    sites
+        .parallelStream()
+        .forEach {
+            val title = GetMetaData().getTitle(it)
+            val description = GetMetaData().getDescription(it)
+            val keywords = GetMetaData().getKeywords(it)
 
-        FileDataHelper().writeConetent("D:/links.txt",
-            "${it}\n${title}\n${description}\n${keywords}\n\n"
-        )
-        println(it)
-    }
+            sb.append(it+"\n")
+            sb.append(title+"\n")
+            sb.append(description+"\n")
+            sb.append(keywords)
+            sb.append("\n\n")
 
+            println(sb)
+        }
+    FileDataHelper().writeContent("D:/links.txt",sb.toString())
 }
